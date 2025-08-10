@@ -10,7 +10,16 @@ import '../../common/widgets/like.dart';
 class YourRecipeWidget extends StatefulWidget {
   const YourRecipeWidget({
     super.key,
+    required this.image,
+    required this.title,
+    required this.rating,
+    required this.timeRequired,
   });
+
+  final String image;
+  final String title;
+  final num rating;
+  final int timeRequired;
 
   @override
   State<YourRecipeWidget> createState() => _YourRecipeWidgetState();
@@ -18,6 +27,7 @@ class YourRecipeWidget extends StatefulWidget {
 
 class _YourRecipeWidgetState extends State<YourRecipeWidget> {
   bool isTapLike = false;
+
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +41,7 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
             child: ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(13),
               child: Image.network(
-                "https://sun9-35.userapi.com/impg/LMdJMrwdMWSL8kbJvSTnbiqwl6RJEnO482BRnw/aEIJ9QvKa0k.jpg?size=1200x799&quality=96&sign=70066b44b3f16d1324834cb30f346b15&c_uniq_tag=0YJTdjGNqSd-v8kfggPf7RKj2yeC4IecTPvcRw_BJ5c&type=album",
+                widget.image,
                 width: 168.w,
                 height: 162.h,
                 fit: BoxFit.cover,
@@ -57,7 +67,7 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Chicken Burger",
+                      widget.title,
                       style: MyStyles.s12w400Color1C0F0D,
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
@@ -69,7 +79,7 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
                           spacing: 4.w,
                           children: [
                             Text(
-                              '5',
+                              '${widget.rating}',
                               style: MyStyles.s12w400pinkEC888D,
                             ),
                             SvgPicture.asset(MyIcons.star),
@@ -80,7 +90,7 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
                           children: [
                             SvgPicture.asset(MyIcons.clock),
                             Text(
-                              '15min',
+                              '${widget.timeRequired}min',
                               style: MyStyles.s12w400pinkEC888D,
                             ),
                           ],
@@ -97,12 +107,15 @@ class _YourRecipeWidgetState extends State<YourRecipeWidget> {
             child: Padding(
               padding: const EdgeInsets.only(top: 7, right: 8.52),
               child: GestureDetector(
-                  onTap: (){
-                    setState(() {
-                      isTapLike = !isTapLike;
-                    });
-                  },
-                  child: Like(isTapLike: isTapLike,)),
+                onTap: () {
+                  setState(() {
+                    isTapLike = !isTapLike;
+                  });
+                },
+                child: Like(
+                  isTapLike: isTapLike,
+                ),
+              ),
             ),
           ),
         ],

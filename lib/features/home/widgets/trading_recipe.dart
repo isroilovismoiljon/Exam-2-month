@@ -10,7 +10,18 @@ import '../../common/widgets/like.dart';
 class TradingRecipe extends StatefulWidget {
   const TradingRecipe({
     super.key,
+    required this.title,
+    required this.description,
+    required this.photo,
+    required this.timeRequired,
+    required this.rating,
   });
+
+  final String title;
+  final String description;
+  final String photo;
+  final int timeRequired;
+  final int rating;
 
   @override
   State<TradingRecipe> createState() => _TradingRecipeState();
@@ -18,6 +29,7 @@ class TradingRecipe extends StatefulWidget {
 
 class _TradingRecipeState extends State<TradingRecipe> {
   bool isTapLike = false;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -50,20 +62,23 @@ class _TradingRecipeState extends State<TradingRecipe> {
                   ),
                   child: Row(
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Salami and cheese pizza",
-                            style: MyStyles.s13w400whiteFFFDF9,
-                          ),
-                          Text(
-                            "This is a quick overview of the ingredients...",
-                            style: MyStyles.s13w300whiteFFFDF9,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ],
+                      SizedBox(
+                        width: 260.w,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              widget.title,
+                              style: MyStyles.s13w400whiteFFFDF9,
+                            ),
+                            Text(
+                              widget.description,
+                              style: MyStyles.s13w300whiteFFFDF9,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ],
+                        ),
                       ),
                       Spacer(),
                       Column(
@@ -78,7 +93,7 @@ class _TradingRecipeState extends State<TradingRecipe> {
                                 height: 10.h,
                               ),
                               Text(
-                                "30min",
+                                "${widget.timeRequired}min",
                                 style: MyStyles.s12w400pinkEC888D,
                               ),
                             ],
@@ -87,7 +102,7 @@ class _TradingRecipeState extends State<TradingRecipe> {
                             spacing: 5.w,
                             children: [
                               Text(
-                                "5",
+                                "${widget.rating}",
                                 style: MyStyles.s12w400pinkEC888D,
                               ),
                               SvgPicture.asset(
@@ -108,7 +123,7 @@ class _TradingRecipeState extends State<TradingRecipe> {
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(14),
                   child: Image.network(
-                    "https://cdn.fishki.net/upload/post/2019/11/27/3153207/tn/5b1fe51a90c38d16213b1231ebd606b9.jpg",
+                    widget.photo,
                     width: 358.w,
                     height: 143.h,
                     fit: BoxFit.cover,
@@ -120,12 +135,15 @@ class _TradingRecipeState extends State<TradingRecipe> {
                 child: Padding(
                   padding: const EdgeInsets.only(top: 7, right: 8.52),
                   child: GestureDetector(
-                      onTap: (){
-                        setState(() {
-                          isTapLike = !isTapLike;
-                        });
-                      },
-                      child: Like(isTapLike: isTapLike,)),
+                    onTap: () {
+                      setState(() {
+                        isTapLike = !isTapLike;
+                      });
+                    },
+                    child: Like(
+                      isTapLike: isTapLike,
+                    ),
+                  ),
                 ),
               ),
             ],

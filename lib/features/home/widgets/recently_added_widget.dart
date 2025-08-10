@@ -9,7 +9,18 @@ import 'package:flutter_svg/flutter_svg.dart';
 class RecentlyAddedWidget extends StatefulWidget {
   const RecentlyAddedWidget({
     super.key,
+    required this.image,
+    required this.title,
+    required this.description,
+    required this.rating,
+    required this.timeRequired,
   });
+
+  final String image;
+  final String title;
+  final String description;
+  final num rating;
+  final int timeRequired;
 
   @override
   State<RecentlyAddedWidget> createState() => _RecentlyAddedWidgetState();
@@ -50,13 +61,13 @@ class _RecentlyAddedWidgetState extends State<RecentlyAddedWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Lemonade',
+                          widget.title,
                           style: MyStyles.s12w400brown3E2823,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          'Acidic and refreshing',
+                          widget.description,
                           style: MyStyles.s13w300brown3E2823,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
@@ -70,7 +81,7 @@ class _RecentlyAddedWidgetState extends State<RecentlyAddedWidget> {
                               spacing: 5.w,
                               children: [
                                 Text(
-                                  '4',
+                                  '${widget.rating}',
                                   style: MyStyles.s12w400pinkEC888D,
                                 ),
                                 SvgPicture.asset(
@@ -91,7 +102,7 @@ class _RecentlyAddedWidgetState extends State<RecentlyAddedWidget> {
                                   height: 10.h,
                                 ),
                                 Text(
-                                  '30min',
+                                  '${widget.timeRequired}min',
                                   style: MyStyles.s12w400pinkEC888D,
                                 ),
                               ],
@@ -106,7 +117,7 @@ class _RecentlyAddedWidgetState extends State<RecentlyAddedWidget> {
               ClipRRect(
                 borderRadius: BorderRadius.circular(14.r),
                 child: Image.network(
-                  'https://avatars.mds.yandex.net/i?id=aa1337efb507fa7157c83cafd5c60843_l-2399446-images-thumbs&n=13',
+                  widget.image,
                   width: 169.w,
                   height: 153.h,
                   fit: BoxFit.cover,

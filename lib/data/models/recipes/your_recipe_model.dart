@@ -1,12 +1,8 @@
 class YourRecipeModel {
-  final int id;
-  final int categoryId;
-  final String title;
-  final String description;
-  final String difficulty;
-  final String photo;
+  final int id, categoryId;
+  final String title, description, difficulty, photo;
   final int timeRequired;
-  final double rating;
+  final num rating;
 
   YourRecipeModel({
     required this.id,
@@ -27,6 +23,6 @@ class YourRecipeModel {
     difficulty: json["difficulty"],
     photo: json["photo"],
     timeRequired: json["timeRequired"],
-    rating: json["rating"]?.toDouble(),
+    rating: json["rating"],
   );
 }

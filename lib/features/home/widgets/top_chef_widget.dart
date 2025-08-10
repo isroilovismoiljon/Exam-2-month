@@ -5,7 +5,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class TopChefWidget extends StatelessWidget {
   const TopChefWidget({
     super.key,
+    required this.firstName,
+    required this.profilePhoto,
   });
+
+  final String firstName;
+  final String profilePhoto;
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +20,13 @@ class TopChefWidget extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(7.r),
           child: Image.network(
-            'https://i.pinimg.com/736x/02/f8/a7/02f8a7d1edf4866076d9a22b2bf22157.jpg',
+            profilePhoto,
             width: 83.w,
             height: 74.h,
           ),
         ),
         Text(
-          'Joseph',
+          firstName,
           style: MyStyles.s12w400whiteFFFDF9,
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
