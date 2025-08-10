@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               body: SingleChildScrollView(
-                padding: EdgeInsets.only(bottom: 125),
+                padding: EdgeInsets.only(bottom: 125, top: 19),
                 child: Column(
                   spacing: 19.h,
                   children: [

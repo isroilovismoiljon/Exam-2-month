@@ -26,7 +26,9 @@ class BottomNavigationBarItems extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+
+                },
                 icon: SvgPicture.asset(MyIcons.home),
               ),
               IconButton(

@@ -23,7 +23,7 @@ class _AppBarBottomItemState extends State<AppBarBottomItem> {
       spacing: 11.w,
       children: [
         ...List.generate(
-          7,
+          widget.vm.categories.length,
               (index) {
             return widget.vm.isLoadingCategories
                 ? CircularProgressIndicator()
@@ -41,13 +41,15 @@ class _AppBarBottomItemState extends State<AppBarBottomItem> {
                 });
               },
               style: TextButton.styleFrom(
-                backgroundColor: widget.vm.selectedCategory == widget.vm.categories[index].id
+                backgroundColor: (widget.vm.selectedCategory ?? 2) == widget.vm.categories[index].id
                     ? MyColors.redPinkMainFD5D69
                     : Colors.transparent,
               ),
               child: Text(
                 widget.vm.categories[index].title,
-                style: MyStyles.s16w400whiteFFFFFF,
+                style: (widget.vm.selectedCategory ?? 2) == widget.vm.categories[index].id
+                    ?MyStyles.s16w400whiteFFFFFF
+                : MyStyles.s16w400redPinkMainFD5D69,
               ),
             );
           },

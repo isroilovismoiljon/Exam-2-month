@@ -69,6 +69,12 @@ class MyStyles {
     color: MyColors.whiteFFFFFF,
     fontFamily: 'LeagueSpartan',
   );
+  static const TextStyle s16w400redPinkMainFD5D69 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: MyColors.redPinkMainFD5D69,
+    fontFamily: 'LeagueSpartan',
+  );
   static const TextStyle s13w300brown3E2823 = TextStyle(
     fontSize: 13,
     fontWeight: FontWeight.w300,

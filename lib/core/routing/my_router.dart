@@ -3,9 +3,11 @@ import 'package:exam_project/features/home/pages/home.dart';
 import 'package:exam_project/features/onboarding/pages/launch.dart';
 import 'package:go_router/go_router.dart';
 
+import 'custom_transition_page.dart';
+
 class MyRouter {
   GoRouter router = GoRouter(
-    initialLocation: Routers.home,
+    initialLocation: Routers.launchPage,
     routes: <RouteBase>[
       GoRoute(
         path: Routers.launchPage,
@@ -13,8 +15,14 @@ class MyRouter {
       ),
       GoRoute(
         path: Routers.home,
-        builder: (context, state) => HomePage(),
+          pageBuilder: (context, state) => buildPageWithRightToLeftTransition(
+            context,
+            state,
+            const HomePage(),
+          ),
       ),
     ],
   );
 }
+
+
