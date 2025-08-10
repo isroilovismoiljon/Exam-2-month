@@ -37,6 +37,8 @@ dependencies:
   flutter_screenutil: ^5.9.3
   provider: ^6.1.5
   go_router: ^16.1.0
+  flutter_svg: ^2.2.0
+  dio: ^5.9.0
 
 dev_dependencies:
   flutter_test:
@@ -48,12 +50,33 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/Icons/
+    - assets/Fonts/
+    - assets/Images/
+    - assets/Images/Launch/
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/Fonts/Poppins/Poppins-Regular.ttf
+
+    - family: PoppinsMedium
+      fonts:
+        - asset: assets/Fonts/Poppins/Poppins-Medium.ttf
+
+    - family: PoppinsSemiBold
+      fonts:
+        - asset: assets/Fonts/Poppins/Poppins-SemiBold.ttf
+
+    - family: LeagueSpartan
+      fonts:
+        - asset: assets/Fonts/LeagueSpartan/LeagueSpartan-Light.ttf
+
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
