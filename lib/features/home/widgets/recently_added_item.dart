@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class RecentlyAddedWidget extends StatefulWidget {
-  const RecentlyAddedWidget({
+class RecentlyAddedItem extends StatefulWidget {
+  const RecentlyAddedItem({
     super.key,
     required this.image,
     required this.title,
@@ -23,10 +23,10 @@ class RecentlyAddedWidget extends StatefulWidget {
   final int timeRequired;
 
   @override
-  State<RecentlyAddedWidget> createState() => _RecentlyAddedWidgetState();
+  State<RecentlyAddedItem> createState() => _RecentlyAddedWidgetState();
 }
 
-class _RecentlyAddedWidgetState extends State<RecentlyAddedWidget> {
+class _RecentlyAddedWidgetState extends State<RecentlyAddedItem> {
   bool isTapLike = false;
 
   @override

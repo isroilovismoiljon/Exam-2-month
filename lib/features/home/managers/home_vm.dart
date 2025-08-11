@@ -48,7 +48,6 @@ class HomeViewModel extends ChangeNotifier {
 
     isLoadingCategories = false;
     notifyListeners();
-
   }
   void selectCategory(int id) {
     selectedCategory = id;

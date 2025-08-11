@@ -1,0 +1,59 @@
+import 'package:exam_project/core/utils/my_styles.dart';
+import 'package:exam_project/data/models/recipes/recenly_added_recipe.dart';
+import 'package:exam_project/features/home/managers/home_vm.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'recently_added_item.dart';
+
+class RecentlyAddedWidget extends StatelessWidget {
+  const RecentlyAddedWidget({
+    super.key,
+    required this.recentlyAddedRecipe, required this.vm,
+  });
+
+  final HomeViewModel vm;
+  final List<RecentlyAddedRecipeModel> recentlyAddedRecipe;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      spacing: 6.h,
+      children: [
+        Text(
+          'Recently Added',
+          style: MyStyles.s15w500redPinkMainFD5D69,
+        ),
+        vm.isLoadingRecentlyRecipes
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : vm.errorRecentlyRecipes.length > 0
+            ? Center(
+                child: Text(
+                  vm.errorRecentlyRecipes,
+                ),
+              )
+            : Row(
+                spacing: 19.w,
+                children: [
+                  RecentlyAddedItem(
+                    image: recentlyAddedRecipe[0].photo,
+                    title: recentlyAddedRecipe[0].title,
+                    description: recentlyAddedRecipe[0].description,
+                    rating: recentlyAddedRecipe[0].rating,
+                    timeRequired: recentlyAddedRecipe[0].timeRequired,
+                  ),
+                  RecentlyAddedItem(
+                    image: recentlyAddedRecipe[1].photo,
+                    title: recentlyAddedRecipe[1].title,
+                    description: recentlyAddedRecipe[1].description,
+                    rating: recentlyAddedRecipe[1].rating,
+                    timeRequired: recentlyAddedRecipe[1].timeRequired,
+                  ),
+                ],
+              ),
+      ],
+    );
+  }
+}
